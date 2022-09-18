@@ -10,8 +10,8 @@
 
 ## Документація
 
-- [Звіт до лабораторної роботи]()
+- [Звіт до лабораторної роботи](/Docs/GovoruhaIP93Lab1.pdf)
 
 - Результат виконання програми:
 
-![UnityGameDemo](./Docs/Demo.gif)
+![UnityGameDemo](/Docs/Demo.gif)
