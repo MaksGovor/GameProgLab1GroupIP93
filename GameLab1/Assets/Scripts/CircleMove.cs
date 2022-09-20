@@ -7,10 +7,10 @@ public class CircleMove : MonoBehaviour
 
     private readonly float speed = 10f;
     private readonly float jumpForce = 15f;
-    private readonly float lowerYPoint = -6f;
-    private Vector3 startPos;
-    private bool isGrounded;
     private Rigidbody2D rb;
+    private bool isGrounded;
+    private Vector3 startPos;
+    public GameObject fallDetector;
 
     // Start is called before the first frame update
     void Start()
@@ -19,19 +19,22 @@ public class CircleMove : MonoBehaviour
         startPos = new Vector3(transform.position.x, transform.position.y, transform.position.z);
     }
 
-    private void OnCollisionEnter2D(Collision2D collision)
-    {
-        isGrounded = true;
-    }
-
     // Update is called once per frame
     void Update()
     {
         if (Input.GetButtonDown("Jump") && isGrounded) Jump();
         if (Input.GetButton("Horizontal")) Move();
-        if (transform.position.y < lowerYPoint) {
-            transform.position = startPos;
-        }
+        fallDetector.transform.position = new Vector2(transform.position.x, fallDetector.transform.position.y);
+    }
+
+    private void OnCollisionEnter2D(Collision2D collision)
+    {
+        if (collision.gameObject.tag == "Platform") isGrounded = true;
+    }
+
+    private void OnTriggerEnter2D(Collider2D trigger)
+    {
+        if (trigger.tag == "FallDetector") transform.position = startPos;
     }
 
     private void Move()
