@@ -9,14 +9,14 @@ public class CircleMove : MonoBehaviour
     private readonly float jumpForce = 15f;
     private Rigidbody2D rb;
     private bool isGrounded;
-    private Vector3 startPos;
+    private Vector2 startPos;
     public GameObject fallDetector;
 
     // Start is called before the first frame update
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
-        startPos = new Vector3(transform.position.x, transform.position.y, transform.position.z);
+        startPos = transform.position;
     }
 
     // Update is called once per frame
