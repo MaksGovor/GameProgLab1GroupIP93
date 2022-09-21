@@ -29,12 +29,18 @@ public class CircleMove : MonoBehaviour
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
-        if (collision.gameObject.tag == "Platform") isGrounded = true;
+        if (collision.gameObject.tag == "Platform")
+        {
+            isGrounded = true;
+        }
     }
 
     private void OnTriggerEnter2D(Collider2D trigger)
     {
-        if (trigger.tag == "FallDetector") transform.position = startPos;
+        if (trigger.tag == "FallDetector")
+        {
+            transform.position = startPos;
+        }
     }
 
     private void Move()
